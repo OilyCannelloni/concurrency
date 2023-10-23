@@ -2,9 +2,7 @@ package org.example;
 
 public class Producer extends Thread {
     private final Buffer _buffer;
-    private final int _nLoops;
-    private final int _sleep;
-    private final int _id;
+    private final int _nLoops, _sleep, _id;
 
     public Producer(int id, Buffer buffer, int nLoops, int sleep) {
         _id = id;
@@ -18,7 +16,7 @@ public class Producer extends Thread {
         for (int i = 0; i < _nLoops; i++) {
             try {
                 _buffer.put(_id);
-                System.out.println("Producer " + _id + " Produced: " + _id + "   Item count: " + _buffer.getItemCount());
+                System.out.printf("Producer %d Produced: %d Item count: %d\n", _id, _id, _buffer.getItemCount());
                 sleep(_sleep);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);

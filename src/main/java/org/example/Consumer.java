@@ -2,8 +2,7 @@ package org.example;
 
 public class Consumer extends Thread {
     private final Buffer _buffer;
-    private final int _nLoops;
-    private final int _sleep, _id;
+    private final int _nLoops, _sleep, _id;
 
     public Consumer(int id, Buffer buffer, int nLoops, int sleep) {
         _id = id;
@@ -17,7 +16,7 @@ public class Consumer extends Thread {
         for (int i = 0; i < _nLoops; i++) {
             try {
                 int consumed = _buffer.take();
-                System.out.println("Consumer " + _id +" Consumed: " + consumed + "   Item count: " + _buffer.getItemCount());
+                System.out.printf("Consumer %d Consumed: %d Item count: %d\n", _id, consumed, _buffer.getItemCount());
                 sleep(_sleep);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);

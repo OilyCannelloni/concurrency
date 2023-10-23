@@ -26,25 +26,23 @@ public class MultipleInsertBuffer extends Buffer {
         for (int e : elements)
             super.put(e);
 
-        _added.signalAll();
-        _taken.signalAll();
+        _added.signal();
         _lock.unlock();
     }
 
-    public int[] take(int n) throws InterruptedException {
-        if (n > _maxInsert) return null;
+    public int[] take(int nTake) throws InterruptedException {
+        if (nTake > _maxInsert) return null;
         _lock.lock();
-        while (_nItems < n) {
+        while (_nItems < nTake) {
             _added.await();
         }
 
-        int[] ret = new int[n];
-        for (int i = 0; i < n; i++)
+        int[] ret = new int[nTake];
+        for (int i = 0; i < nTake; i++)
             ret[i] = super.take();
 
 
-        _taken.signalAll();
-        _added.signalAll();
+        _taken.signal();
         _lock.unlock();
         return ret;
     }

@@ -7,6 +7,6 @@ import org.example.WeissGruzlewskiProblems.P433_MultipleInsertBuffer;
 
 public class Main {
     public static void main(String[] args) {
-        P433_MultipleInsertBuffer.main();
+        Lab3_LockCondition.main();
     }
 }
