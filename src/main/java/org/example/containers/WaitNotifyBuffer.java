@@ -1,4 +1,4 @@
-package org.example;
+package org.example.containers;
 
 public class WaitNotifyBuffer extends Buffer {
     public WaitNotifyBuffer(int length) {

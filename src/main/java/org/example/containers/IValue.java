@@ -1,4 +1,4 @@
-package org.example;
+package org.example.containers;
 
 public interface IValue {
     int get() throws InterruptedException;

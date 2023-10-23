@@ -1,18 +1,19 @@
-package org.example;
+package org.example.threads;
+
+import org.example.containers.SpaghettiTable;
 
 import java.util.Random;
 
 public class Philosopher extends Thread {
     private final SpaghettiTable _table;
-    private final int _id, _nLoops, _sleepTime, _eatTime;
+    private final int _id, _nLoops, _sleepTime;
     private final Random rand = new Random();
 
-    public Philosopher(int id, SpaghettiTable table, int nLoops, int sleepTime, int eatTime) {
+    public Philosopher(int id, SpaghettiTable table, int nLoops, int sleepTime) {
         _id = id;
         _table = table;
         _nLoops = nLoops;
         _sleepTime = sleepTime;
-        _eatTime = eatTime;
     }
 
     private void _sleep() throws InterruptedException {
@@ -21,8 +22,8 @@ public class Philosopher extends Thread {
     }
 
     private void _eat() throws InterruptedException {
-        if (_eatTime == 0) return;
-        sleep(rand.nextInt(_eatTime));
+        if (_sleepTime == 0) return;
+        sleep(rand.nextInt(_sleepTime));
     }
 
     public void run() {

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.containers;
 
 public class IntValue implements IValue {
     private int value = 0;

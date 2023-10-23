@@ -1,4 +1,4 @@
-package org.example;
+package org.example.containers;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;

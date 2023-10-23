@@ -1,20 +1,24 @@
 package org.example.WeissGruzlewskiProblems;
 
-import org.example.*;
-import org.example.meta.ConsumerFactory;
-import org.example.meta.ProducerFactory;
+import org.example.containers.Buffer;
+import org.example.containers.LockConditionBuffer;
+import org.example.meta.ThreadFactory;
 import org.example.meta.ThreadRunner;
+import org.example.threads.Consumer;
+import org.example.threads.Producer;
 
 import java.util.Map;
 
 public class P422_ProducerConsumer {
     public static void main() {
         Buffer buffer = new LockConditionBuffer(10);
-        ProducerFactory producerF = new ProducerFactory(buffer, 100, 0);
-        ConsumerFactory consumerF = new ConsumerFactory(buffer, 100, 0);
+
+        ThreadFactory producer = new ThreadFactory(Producer.class).setBuffer(buffer);
+        ThreadFactory consumer = new ThreadFactory(Consumer.class).setBuffer(buffer);
+
         ThreadRunner threadRunner = new ThreadRunner(Map.of(
-                producerF, 7,
-                consumerF, 5
+                producer, 5,
+                consumer, 5
         ));
 
         threadRunner.startAll();

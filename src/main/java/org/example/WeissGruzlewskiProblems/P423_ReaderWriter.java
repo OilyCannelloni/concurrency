@@ -1,24 +1,24 @@
 package org.example.WeissGruzlewskiProblems;
 
-import org.example.IValue;
-import org.example.ReadWriteProtectedIntValue;
-import org.example.meta.ReaderFactory;
+import org.example.containers.IValue;
+import org.example.threads.IntReader;
+import org.example.threads.IntWriter;
+import org.example.containers.ReadWriteProtectedIntValue;
+import org.example.meta.ThreadFactory;
 import org.example.meta.ThreadRunner;
-import org.example.meta.WriterFactory;
 
 import java.util.Map;
 
 public class P423_ReaderWriter {
     public static void main() {
-        int nReaders = 100;
-        int nWriters = 50;
         IValue value = new ReadWriteProtectedIntValue();
 
-        WriterFactory writerFactory = new WriterFactory(value, 100, 0);
-        ReaderFactory readerFactory = new ReaderFactory(value, 100, 0);
+        ThreadFactory writerFactory = new ThreadFactory(IntWriter.class).setValue(value);
+        ThreadFactory readerFactory = new ThreadFactory(IntReader.class).setValue(value);
+
         ThreadRunner threadRunner = new ThreadRunner(Map.of(
-                writerFactory, nWriters,
-                readerFactory, nReaders
+                writerFactory, 100,
+                readerFactory, 50
         ));
 
         threadRunner.startAll();

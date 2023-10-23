@@ -1,6 +1,17 @@
-package org.example;
+package org.example.lab;
+
+import org.example.containers.Buffer;
+import org.example.containers.WaitNotifyBuffer;
+import org.example.meta.ThreadFactory;
+import org.example.meta.ThreadRunner;
+import org.example.threads.Consumer;
+import org.example.threads.Producer;
+
+import java.util.Map;
 
 public class Lab2_ProducerConsumer {
+    static int N_PRODUCERS = 100, N_CONSUMERS = 100;
+
     public static void main() {
         /*
         //  2 producentów 1 konsument, układ zdarzeń prowadzący do zakleszczenia:
@@ -20,30 +31,16 @@ public class Lab2_ProducerConsumer {
 
 
         Buffer buffer = new WaitNotifyBuffer(1);
-        int nProducers = 100;
-        int nConsumers = 100;
 
-        Thread[] threads = new Thread[nProducers + nConsumers];
-        for (int i = 0; i < nProducers; i++) {
-            Producer producer = new Producer(i, buffer, 10, 0);
-            threads[i] = producer;
-        }
-        for (int i = 0; i < nConsumers; i++) {
-            Consumer consumer = new Consumer(i, buffer, 10, 0);
-            threads[nProducers + i] = consumer;
-        }
+        ThreadFactory producer = new ThreadFactory(Producer.class).setBuffer(buffer);
+        ThreadFactory consumer = new ThreadFactory(Consumer.class).setBuffer(buffer);
 
-        for (Thread thread : threads)
-            thread.start();
+        ThreadRunner threadRunner = new ThreadRunner(Map.of(
+                producer, N_PRODUCERS,
+                consumer, N_CONSUMERS
+        ));
 
-
-
-        try {
-            for (Thread thread : threads)
-                thread.join();
-            System.out.println("All threads joined.");
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        threadRunner.startAll();
+        threadRunner.joinAll();
     }
 }

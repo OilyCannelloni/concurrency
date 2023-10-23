@@ -1,6 +1,5 @@
-package org.example;
+package org.example.containers;
 
-import java.util.Collection;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
