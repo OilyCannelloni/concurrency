@@ -4,43 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6edfe86a-c42b-4a2e-b275-69dc5ec97325" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Buffer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Consumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/DecrementingThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/IValue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/IncrementingThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/IntReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/IntValue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/IntWriter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Lab2_ProducerConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/LockConditionBuffer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/MultipleConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/MultipleInsertBuffer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/MultipleProducer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Philosopher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Producer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/RaceCondition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/ReadWriteProtectedIntValue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/SpaghettiTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/WaitNotifyBuffer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/WeissGruzlewskiProblems/P422_ProducerConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/WeissGruzlewskiProblems/P423_ReaderWriter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/WeissGruzlewskiProblems/P424_FivePhilosophers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/WeissGruzlewskiProblems/P433_MultipleInsertBuffer.java" afterDir="false" />
+    <list default="true" id="6edfe86a-c42b-4a2e-b275-69dc5ec97325" name="Changes" comment="lab2 and problems">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/meta/ConsumerFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/meta/IThreadFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/meta/PhilosopherFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/meta/ProducerFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/meta/ReaderFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/meta/ThreadRunner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/meta/WriterFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Buffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Buffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Consumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Lab2_ProducerConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Lab2_ProducerConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/LockConditionBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/LockConditionBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MultipleConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MultipleConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MultipleInsertBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MultipleInsertBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MultipleProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MultipleProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Producer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/RaceCondition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Lab1_RaceCondition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WaitNotifyBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WaitNotifyBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WeissGruzlewskiProblems/P422_ProducerConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WeissGruzlewskiProblems/P422_ProducerConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WeissGruzlewskiProblems/P423_ReaderWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WeissGruzlewskiProblems/P423_ReaderWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WeissGruzlewskiProblems/P424_FivePhilosophers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WeissGruzlewskiProblems/P424_FivePhilosophers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WeissGruzlewskiProblems/P433_MultipleInsertBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WeissGruzlewskiProblems/P433_MultipleInsertBuffer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,8 +74,8 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.org.example.Main">
+    <configuration name="org.example.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="concurrency.main" />
       <extension name="coverage">
@@ -122,7 +108,7 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.org.example.Main" />
       <item itemvalue="Gradle.concurrency" />
     </list>
   </component>
@@ -135,6 +121,14 @@
       <option name="presentableId" value="Default" />
       <updated>1697366476752</updated>
     </task>
+    <task id="LOCAL-00001" summary="lab2 and problems">
+      <created>1698045176328</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1698045176328</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -147,6 +141,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="lab2 and problems" />
+    <option name="LAST_COMMIT_MESSAGE" value="lab2 and problems" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

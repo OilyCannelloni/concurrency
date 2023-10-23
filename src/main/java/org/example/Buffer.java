@@ -1,23 +1,28 @@
 package org.example;
 
-import java.util.LinkedList;
-import java.util.List;
 
-public abstract class Buffer<T> {
+public abstract class Buffer {
     protected final int _length;
-    protected int _nItems;
-    protected final List<T> _buffer = new LinkedList<>();
-
-    public Buffer() {
-        _length = 1;
-    }
+    protected int _nItems, _takePtr, _putPtr;
+    protected final int[] _buffer;
 
     public Buffer(int length) {
         _length = length;
+        _buffer = new int[length];
     }
 
-    public abstract void put(T item) throws InterruptedException;
-    public abstract T take() throws InterruptedException;
+    public void put(int item) throws InterruptedException {
+        _buffer[_putPtr] = item;
+        _putPtr = (_putPtr + 1) % _length;
+        _nItems++;
+    }
+
+    public int take() throws InterruptedException {
+        int e = _buffer[_takePtr++];
+        _takePtr = (_takePtr + 1) % _length;
+        _nItems--;
+        return e;
+    }
 
     public int getItemCount() {
         return _nItems;

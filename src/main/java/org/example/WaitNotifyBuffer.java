@@ -1,25 +1,27 @@
 package org.example;
 
-public class WaitNotifyBuffer<T> extends Buffer<T> {
+public class WaitNotifyBuffer extends Buffer {
     public WaitNotifyBuffer(int length) {
         super(length);
     }
 
-    public synchronized void put(T item) throws InterruptedException {
+    public synchronized void put(int item) throws InterruptedException {
         while (_nItems >= _length) {
             wait();
         }
-        _buffer.add(item);
-        _nItems++;
+
+        super.put(item);
+
         notifyAll();
     }
 
-    public synchronized T take() throws InterruptedException {
+    public synchronized int take() throws InterruptedException {
         while (_nItems == 0) {
             wait();
         }
-        T item = _buffer.remove(0);
-        _nItems--;
+
+        int item = super.take();
+
         notifyAll();
         return item;
     }

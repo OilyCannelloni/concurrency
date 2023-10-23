@@ -1,12 +1,11 @@
 package org.example;
 
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class MultipleInsertBuffer<T> extends Buffer<T> {
+public class MultipleInsertBuffer extends Buffer {
     private final int _maxInsert;
     private final Lock _lock = new ReentrantLock();
     private final Condition _taken = _lock.newCondition();
@@ -17,41 +16,31 @@ public class MultipleInsertBuffer<T> extends Buffer<T> {
         _maxInsert = maxInsert;
     }
 
-    @Override
-    public void put(T item) {
-        _buffer.add(item);
-    }
-
-    @Override
-    public T take() {
-        return _buffer.remove(0);
-    }
-
-    public void put(Collection<T> elements) throws InterruptedException {
+    public void put(int[] elements) throws InterruptedException {
+        if (elements.length > _maxInsert) return;
         _lock.lock();
-        while (_nItems + elements.size() > _length) {
+        while (_nItems + elements.length > _length) {
             _taken.await();
         }
 
-        for (T e : elements)
-            put(e);
-        _nItems += elements.size();
+        for (int e : elements)
+            super.put(e);
 
         _added.signalAll();
         _taken.signalAll();
         _lock.unlock();
     }
 
-    public Collection<T> take(int n) throws InterruptedException {
+    public int[] take(int n) throws InterruptedException {
+        if (n > _maxInsert) return null;
         _lock.lock();
         while (_nItems < n) {
             _added.await();
         }
 
-        LinkedList<T> ret = new LinkedList<>();
+        int[] ret = new int[n];
         for (int i = 0; i < n; i++)
-            ret.add(take());
-        _nItems -= n;
+            ret[i] = super.take();
 
 
         _taken.signalAll();

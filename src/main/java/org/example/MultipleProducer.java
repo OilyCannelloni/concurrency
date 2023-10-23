@@ -1,21 +1,17 @@
 package org.example;
 
-import java.util.Collection;
-import java.util.LinkedList;
 import java.util.Random;
 
-public class MultipleProducer<T> extends Thread {
-    private final T _producedData;
-    private final MultipleInsertBuffer<T> _buffer;
+public class MultipleProducer extends Thread {
+    private final MultipleInsertBuffer _buffer;
     private final int _nLoops;
     private final int _sleep, _maxPut;
     private final int _id;
     private final Random rand = new Random();
 
-    public MultipleProducer(int id, MultipleInsertBuffer<T> buffer, int maxPut, T producedData, int nLoops, int sleep) {
+    public MultipleProducer(int id, MultipleInsertBuffer buffer, int maxPut, int nLoops, int sleep) {
         _id = id;
         _buffer = buffer;
-        _producedData = producedData;
         _nLoops = nLoops;
         _sleep = sleep;
         _maxPut = maxPut;
@@ -26,14 +22,14 @@ public class MultipleProducer<T> extends Thread {
         for (int i = 0; i < _nLoops; i++) {
             try {
                 int n = rand.nextInt(_maxPut);
-                LinkedList<T> list = new LinkedList<>();
+                int[] data = new int[n];
                 for (int q = 0; q < n; q++) {
-                    list.add(_producedData);
+                    data[q] = _id;
                 }
 
-                _buffer.put(list);
+                _buffer.put(data);
 
-                System.out.printf("ID: %d Produced: %d\n", _id, n);
+                System.out.printf("ID: %d nProduced: %d nElements: %d\n", _id, n, _buffer.getItemCount());
                 sleep(_sleep);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);

@@ -1,26 +1,21 @@
 package org.example.WeissGruzlewskiProblems;
 
-import org.example.Philosopher;
 import org.example.SpaghettiTable;
+import org.example.meta.PhilosopherFactory;
+import org.example.meta.ThreadRunner;
+
+import java.util.Map;
 
 public class P424_FivePhilosophers {
     public static void main() {
-        System.out.println("aaaa");
         int nEaters = 5;
         SpaghettiTable table = new SpaghettiTable(nEaters);
-        Thread[] threads = new Thread[nEaters];
-        for (int i = 0; i < nEaters; i++) {
-            threads[i] = new Philosopher(i, table, 10, 0, 0);
-        }
-        for (Thread t : threads)
-            t.start();
+        PhilosopherFactory philosopherFactory = new PhilosopherFactory(table);
+        ThreadRunner threadRunner = new ThreadRunner(Map.of(
+                philosopherFactory, nEaters
+        ));
 
-        try {
-            for (Thread t : threads)
-                t.join();
-            System.out.println("All threads joined");
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        threadRunner.startAll();
+        threadRunner.joinAll();
     }
 }

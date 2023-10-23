@@ -1,6 +1,6 @@
 package org.example;
 
-public class RaceCondition {
+public class Lab1_RaceCondition {
     public static void main() {
         int nThreads = 100;
         int nLoops = 2000;
