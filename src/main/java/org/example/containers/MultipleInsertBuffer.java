@@ -4,19 +4,16 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class MultipleInsertBuffer extends Buffer {
-    private final int _maxInsert;
+public class MultipleInsertBuffer extends Buffer implements IMultipleBuffer {
     private final Lock _lock = new ReentrantLock();
     private final Condition _taken = _lock.newCondition();
     private final Condition _added = _lock.newCondition();
 
-    public MultipleInsertBuffer(int maxInsert) {
-        super(2 * maxInsert);
-        _maxInsert = maxInsert;
+    public MultipleInsertBuffer(int length) {
+        super(2 * length);
     }
 
     public void put(int[] elements) throws InterruptedException {
-        if (elements.length > _maxInsert) return;
         _lock.lock();
         while (_nItems + elements.length > _length) {
             _taken.await();
@@ -29,15 +26,14 @@ public class MultipleInsertBuffer extends Buffer {
         _lock.unlock();
     }
 
-    public int[] take(int nTake) throws InterruptedException {
-        if (nTake > _maxInsert) return null;
+    public int[] take(int n) throws InterruptedException {
         _lock.lock();
-        while (_nItems < nTake) {
+        while (_nItems < n) {
             _added.await();
         }
 
-        int[] ret = new int[nTake];
-        for (int i = 0; i < nTake; i++)
+        int[] ret = new int[n];
+        for (int i = 0; i < n; i++)
             ret[i] = super.take();
 
 

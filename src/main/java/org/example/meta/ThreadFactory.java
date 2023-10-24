@@ -1,9 +1,6 @@
 package org.example.meta;
 
-import org.example.containers.Buffer;
-import org.example.containers.IValue;
-import org.example.containers.MultipleInsertBuffer;
-import org.example.containers.SpaghettiTable;
+import org.example.containers.*;
 import org.example.threads.*;
 
 public class ThreadFactory implements IThreadFactory {
@@ -11,7 +8,7 @@ public class ThreadFactory implements IThreadFactory {
 
     private IValue _value;
     private Buffer _buffer;
-    private MultipleInsertBuffer _multipleInsertBuffer;
+    private IMultipleBuffer _multipleInsertBuffer;
     private SpaghettiTable _table;
     private int _loopCount = 100, _sleep = 0, _currentID = -1, _elementCount = 1;
     private boolean _isRandom = true;
@@ -25,8 +22,8 @@ public class ThreadFactory implements IThreadFactory {
         return this;
     }
 
-    public ThreadFactory setMIBuffer(MultipleInsertBuffer miBuffer) {
-        _multipleInsertBuffer = miBuffer;
+    public ThreadFactory setMultipleBuffer(IMultipleBuffer mBuffer) {
+        _multipleInsertBuffer = mBuffer;
         return this;
     }
 
