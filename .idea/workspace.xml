@@ -4,18 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6edfe86a-c42b-4a2e-b275-69dc5ec97325" name="Changes" comment="ThreadFactory">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/WeissGruzlewskiProblems/P443_NonStarvingMultiplePC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/containers/IMultipleBuffer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/containers/NonStarvingMultipleBuffer.java" afterDir="false" />
+    <list default="true" id="6edfe86a-c42b-4a2e-b275-69dc5ec97325" name="Changes" comment="P443 Non-starving buffer">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/containers/FourCond_Boolean_MultipleBuffer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/containers/NestedLockBuffer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab/Lab5_NestedLocks.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/lab/Lab6_TimeMeasurement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WeissGruzlewskiProblems/P433_MultipleInsertBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WeissGruzlewskiProblems/P433_MultipleInsertBuffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/containers/MultipleInsertBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/containers/MultipleInsertBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WeissGruzlewskiProblems/P443_NonStarvingMultiplePC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WeissGruzlewskiProblems/P443_NonStarvingMultiplePC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/containers/MultipleInsertBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/containers/TwoCond_MultipleBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/containers/NonStarvingMultipleBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/containers/FourCond_HasWaiters_MultipleBuffer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/lab/Lab3_LockCondition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/lab/Lab3_LockCondition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/meta/ThreadFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/meta/ThreadFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/meta/ThreadRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/meta/ThreadRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/threads/Consumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/threads/Consumer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/threads/MultipleConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/threads/MultipleConsumer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/threads/MultipleProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/threads/MultipleProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/threads/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/threads/Producer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +46,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -60,12 +66,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Language Defaults&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
@@ -141,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698083451849</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="P443 Non-starving buffer">
+      <created>1698136590264</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1698136590264</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -160,7 +173,8 @@
     <MESSAGE value="ThreadRunner" />
     <MESSAGE value="Lab3" />
     <MESSAGE value="ThreadFactory" />
-    <option name="LAST_COMMIT_MESSAGE" value="ThreadFactory" />
+    <MESSAGE value="P443 Non-starving buffer" />
+    <option name="LAST_COMMIT_MESSAGE" value="P443 Non-starving buffer" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -4,12 +4,12 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class MultipleInsertBuffer extends Buffer implements IMultipleBuffer {
+public class TwoCond_MultipleBuffer extends Buffer implements IMultipleBuffer {
     private final Lock _lock = new ReentrantLock();
     private final Condition _taken = _lock.newCondition();
     private final Condition _added = _lock.newCondition();
 
-    public MultipleInsertBuffer(int length) {
+    public TwoCond_MultipleBuffer(int length) {
         super(2 * length);
     }
 

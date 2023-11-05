@@ -1,7 +1,6 @@
 package org.example.threads;
 
 import org.example.containers.IMultipleBuffer;
-import org.example.containers.MultipleInsertBuffer;
 
 import java.util.Random;
 
@@ -11,15 +10,16 @@ public class MultipleProducer extends Thread {
     private final int _sleep, _nProduced;
     private final int _id;
     private final Random rand = new Random();
-    private final boolean _isRandom;
+    private final boolean _isRandom, _verbose;
 
-    public MultipleProducer(int id, IMultipleBuffer buffer, int nLoops, int sleep, int nProduced, boolean isRandom) {
+    public MultipleProducer(int id, IMultipleBuffer buffer, int nLoops, int sleep, int nProduced, boolean isRandom, boolean verbose) {
         _id = id;
         _buffer = buffer;
         _nLoops = nLoops;
         _sleep = sleep;
         _nProduced = nProduced;
         _isRandom = isRandom;
+        _verbose = verbose;
     }
 
     @Override
@@ -37,10 +37,12 @@ public class MultipleProducer extends Thread {
 
                 _buffer.put(data);
 
-                System.out.printf("P%d nProduced: %d nElements: %d\n", _id, n, _buffer.getItemCount());
+                if (_verbose)
+                    System.out.printf("P%d nProduced: %d nElements: %d\n", _id, n, _buffer.getItemCount());
                 sleep(_sleep);
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                if (_verbose)
+                    System.out.printf("P%d interrupted.\n", _id);
             }
         }
     }

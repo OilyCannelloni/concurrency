@@ -11,7 +11,7 @@ public class ThreadFactory implements IThreadFactory {
     private IMultipleBuffer _multipleInsertBuffer;
     private SpaghettiTable _table;
     private int _loopCount = 100, _sleep = 0, _currentID = -1, _elementCount = 1;
-    private boolean _isRandom = true;
+    private boolean _isRandom = true, _verbose = true;
 
     public ThreadFactory(Class<? extends Thread> cls) {
         _cls = cls;
@@ -34,6 +34,11 @@ public class ThreadFactory implements IThreadFactory {
 
     public ThreadFactory setSleep(int sleepMillis) {
         _sleep = sleepMillis;
+        return this;
+    }
+
+    public ThreadFactory setVerbose(boolean verbose) {
+        _verbose = verbose;
         return this;
     }
 
@@ -66,14 +71,14 @@ public class ThreadFactory implements IThreadFactory {
     @Override
     public Thread create() {
         if (_cls == Producer.class)
-            return new Producer(++_currentID, _buffer, _loopCount, _sleep);
+            return new Producer(++_currentID, _buffer, _loopCount, _sleep, _verbose);
         else if (_cls == Consumer.class)
-            return new Consumer(++_currentID, _buffer, _loopCount, _sleep);
+            return new Consumer(++_currentID, _buffer, _loopCount, _sleep, _verbose);
 
         else if (_cls == MultipleProducer.class)
-            return new MultipleProducer(++_currentID, _multipleInsertBuffer, _loopCount, _sleep, _elementCount, _isRandom);
+            return new MultipleProducer(++_currentID, _multipleInsertBuffer, _loopCount, _sleep, _elementCount, _isRandom, _verbose);
         else if (_cls == MultipleConsumer.class)
-            return new MultipleConsumer(++_currentID, _multipleInsertBuffer, _loopCount, _sleep, _elementCount, _isRandom);
+            return new MultipleConsumer(++_currentID, _multipleInsertBuffer, _loopCount, _sleep, _elementCount, _isRandom, _verbose);
 
         else if (_cls == Philosopher.class)
             return new Philosopher(++_currentID, _table, _loopCount, _sleep);
