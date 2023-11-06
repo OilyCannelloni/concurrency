@@ -1,6 +1,7 @@
 package org.example.threads;
 
 import org.example.containers.IMultipleBuffer;
+import org.example.meta.Common;
 
 import java.util.Random;
 
@@ -9,7 +10,6 @@ public class MultipleProducer extends Thread {
     private final int _nLoops;
     private final int _sleep, _nProduced;
     private final int _id;
-    private final Random rand = new Random();
     private final boolean _isRandom, _verbose;
 
     public MultipleProducer(int id, IMultipleBuffer buffer, int nLoops, int sleep, int nProduced, boolean isRandom, boolean verbose) {
@@ -28,7 +28,7 @@ public class MultipleProducer extends Thread {
             try {
                 int n = _nProduced;
                 if (_isRandom)
-                    n = rand.nextInt(_nProduced - 1) + 1;
+                    n = Common.random.nextInt(_nProduced - 1) + 1;
                 int[] data = new int[n];
 
                 for (int q = 0; q < n; q++) {

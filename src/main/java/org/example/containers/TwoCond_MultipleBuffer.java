@@ -10,7 +10,7 @@ public class TwoCond_MultipleBuffer extends Buffer implements IMultipleBuffer {
     private final Condition _added = _lock.newCondition();
 
     public TwoCond_MultipleBuffer(int length) {
-        super(2 * length);
+        super(length);
     }
 
     public void put(int[] elements) throws InterruptedException {

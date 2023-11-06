@@ -1,6 +1,7 @@
 package org.example.threads;
 
 import org.example.containers.IMultipleBuffer;
+import org.example.meta.Common;
 
 import java.util.Random;
 
@@ -8,7 +9,6 @@ public class MultipleConsumer extends Thread {
     private final IMultipleBuffer _buffer;
     private final int _nLoops;
     private final int _sleep, _id, _nConsumed;
-    private final Random rand = new Random();
     private final boolean _isRandom, _verbose;
 
     public MultipleConsumer(int id, IMultipleBuffer buffer, int nLoops, int sleep, int nConsumed, boolean isRandom, boolean verbose) {
@@ -27,7 +27,7 @@ public class MultipleConsumer extends Thread {
             try {
                 int n = _nConsumed;
                 if (_isRandom)
-                    n = rand.nextInt(_nConsumed - 1) + 1;
+                    n = Common.random.nextInt(_nConsumed - 1) + 1;
 
                 int[] _consumedData = _buffer.take(n);
 

@@ -11,7 +11,7 @@ Konfiguracja początkowa:  W buforze mamy 0 elementów. C5 czeka na firstConsume
 1.  Producent produkuje 4, udaje się. W buforze 4.
     Sygnalizuje firstConsumer.
     C5 wychodzi z kolejki warunku firstConsumer, wpada do oczekujących na locka, ale
-        locka zajmuje nowy C4! W Java locki nie są kolejką, lecz zbiorem!
+        locka zajmuje nowy C4!
 
 2.  C4 sprawdza firstProducer.hasWaiters(), lecz dostaje (zgodnie z prawdą) False.
     Przechodzi dalej i sprawdza, czy w buforze jest wystarczająco (jest 4)
