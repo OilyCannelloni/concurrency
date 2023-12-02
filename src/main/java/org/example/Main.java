@@ -5,6 +5,6 @@ import org.example.lab.*;
 
 public class Main {
     public static void main(String[] args) {
-        Lab6_TimeMeasurement.main();
+        Lab9_MultipleBufferCSP.main();
     }
 }

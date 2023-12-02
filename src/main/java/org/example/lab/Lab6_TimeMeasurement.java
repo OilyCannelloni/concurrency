@@ -12,20 +12,20 @@ import org.example.threads.MultipleProducer;
 import java.util.Map;
 
 public class Lab6_TimeMeasurement {
-    static int MAX_INSERT = 5;
+    static int MAX_INSERT = 10;
     public static void main() {
         IMultipleBuffer buffer_4 = new FourCond_Boolean_MultipleBuffer(2 * MAX_INSERT);
 
         ThreadFactory producer = new ThreadFactory(MultipleProducer.class)
                 .setMultipleBuffer(buffer_4)
                 .setElementCount(MAX_INSERT)
-                .setLoopCount(100000)
+                .setLoopCount(10000)
                 .setVerbose(false);
 
         ThreadFactory consumer = new ThreadFactory(MultipleConsumer.class)
                 .setMultipleBuffer(buffer_4)
                 .setElementCount(MAX_INSERT)
-                .setLoopCount(100000)
+                .setLoopCount(10000)
                 .setVerbose(false);
 
         ThreadRunner threadRunner = new ThreadRunner(Map.of(
@@ -55,4 +55,6 @@ public class Lab6_TimeMeasurement {
         threadRunner.startAll();
         threadRunner.joinAny();
     }
+
+
 }

@@ -24,6 +24,7 @@ Konfiguracja początkowa:  W buforze mamy 0 elementów. C5 czeka na firstConsume
 /*
 Deadlock przy użyciu hasWaiters()
 Bufor 20, max porcja 10
+PX = producent produkujący X
 
 Konfiguracja startowa:  W buforze 0. C5 czeka na firstConsumer.
 1.  P1 produkuje 1. W buforze 1.

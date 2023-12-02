@@ -92,6 +92,11 @@ public class ThreadRunner {
             }
         }
 
+        if (_measureTime) {
+            long delta = System.nanoTime() - _startTime;
+            System.out.printf("> %-30s%s ns\n", "Real excecution time:", deltaToString(delta));
+        }
+
         // Mierzymy czas CPU
         if (_measureTimeCPU) {
             LinkedList<Long> times = new LinkedList<>();
@@ -107,10 +112,7 @@ public class ThreadRunner {
         }
 
         // Mierzymy czas rzeczywisty
-        if (_measureTime) {
-            long delta = System.nanoTime() - _startTime;
-            System.out.printf("> %-30s%s ns\n", "Real excecution time:", deltaToString(delta));
-        }
+
 
         // Mordujemy pozostałe
         for (Thread thread : _threads) {
