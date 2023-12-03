@@ -1,4 +1,4 @@
-package org.example.csp;
+package org.example.csp.distrbuffer;
 
 import org.jcsp.lang.*;
 
@@ -7,13 +7,12 @@ import java.util.Arrays;
 
 
 public class CspBufferManager implements CSProcess {
-    private final int _length, _producerPivot;
-    protected final int _cellSize;
+    private final int _producerPivot;
     private final ArrayList<One2OneChannelInt> _pcChannels, _cellChannels;
     protected final int[] _nItems;
     private final Alternative _alternative;
     private int _nProducersRunning, _nConsumersRunning;
-    private CspBufferCell[] _bufferCells;
+    private final CspBufferCell[] _bufferCells;
 
 
     public CspBufferManager(
@@ -21,15 +20,14 @@ public class CspBufferManager implements CSProcess {
             CspChannelProducer[] producers,
             CspChannelConsumer[] consumers
     ) {
-        _length = bufferCells.length;
         _nProducersRunning = producers.length;
         _nConsumersRunning = consumers.length;
+        _producerPivot = producers.length;
+
         _bufferCells = bufferCells;
 
-        _producerPivot = producers.length;
-        _nItems = new int[_length];
+        _nItems = new int[bufferCells.length];
         Arrays.fill(_nItems, 0);
-        _cellSize = 5;
 
         _cellChannels = new ArrayList<>(Arrays.stream(bufferCells).map(c -> c._managerChannel).toList());
 
@@ -43,6 +41,8 @@ public class CspBufferManager implements CSProcess {
         _alternative = new Alternative(_guards);
     }
 
+
+
     protected int getNextProducerBuffer() {
         int minIndex = 0;
         int minValue = Integer.MAX_VALUE;
@@ -52,7 +52,7 @@ public class CspBufferManager implements CSProcess {
                 minValue = _nItems[i];
             }
         }
-        if (minValue == _cellSize)
+        if (minValue == Test.CELL_SIZE)
             return -1; // All full
         return minIndex;
     }

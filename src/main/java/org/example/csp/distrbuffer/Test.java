@@ -1,4 +1,4 @@
-package org.example.csp;
+package org.example.csp.distrbuffer;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -22,7 +22,8 @@ public class Test {
     static int
         PRODUCER_MAX_SLEEP = 8,
         CONSUMER_MAX_SLEEP = 20,
-        LOOPS = 1000;
+        LOOPS = 10,
+        CELL_SIZE = 5;
 
     static void sleep(int max) {
         try {

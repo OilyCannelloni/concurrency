@@ -1,4 +1,4 @@
-package org.example.csp;
+package org.example.csp.distrbuffer;
 
 public class RoundRobinBufferManager extends CspBufferManager {
     public RoundRobinBufferManager(CspBufferCell[] bufferCells, CspChannelProducer[] producers, CspChannelConsumer[] consumers) {
@@ -23,7 +23,7 @@ public class RoundRobinBufferManager extends CspBufferManager {
         int c = _nItems.length;
         while (c-- > 0) {
             _putPtr = (_putPtr + 1) % _nItems.length;
-            if (_nItems[_putPtr] < _cellSize)
+            if (_nItems[_putPtr] < Test.CELL_SIZE)
                 return _putPtr;
         }
         Test.print(Test.PType.MASTER, "All cells full!");

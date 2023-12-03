@@ -1,11 +1,7 @@
-package org.example.lab;
+package org.example.csp.distrbuffer;
 
-import org.example.csp.*;
 import org.jcsp.lang.CSProcess;
-import org.jcsp.lang.Channel;
-import org.jcsp.lang.One2OneChannelInt;
 import org.jcsp.lang.Parallel;
-
 import java.util.LinkedList;
 import java.util.List;
 

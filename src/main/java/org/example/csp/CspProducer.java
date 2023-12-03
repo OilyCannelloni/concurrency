@@ -17,7 +17,7 @@ public class CspProducer implements CSProcess {
 
     public void run() {
         for (int i = 0; i < _loops; i++) {
-            int item = (ThreadLocalRandom.current().nextInt(_maxProduce))+1;
+            int item = (ThreadLocalRandom.current().nextInt(_maxProduce)) + 1;
             _channel.out().write(item);
         }
     }

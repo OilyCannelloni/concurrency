@@ -1,4 +1,4 @@
-package org.example.csp;
+package org.example.csp.distrbuffer;
 
 import org.jcsp.lang.CSProcess;
 import org.jcsp.lang.Channel;

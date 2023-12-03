@@ -1,9 +1,9 @@
-package org.example.csp;
+package org.example.csp.distrbuffer;
 
 import org.jcsp.lang.*;
 
 public class CspBufferCell implements CSProcess {
-    static int classId = 0, MAX_ITEMS = 5;
+    static int classId = 0;
     private final int _id;
     public final One2OneChannelInt _inChannel, _outChannel, _managerChannel;
     private int _nItems = 0, _uses = 0;
@@ -21,7 +21,7 @@ public class CspBufferCell implements CSProcess {
     }
 
     public void awaitItem() {
-        if (_nItems >= MAX_ITEMS) {
+        if (_nItems >= Test.CELL_SIZE) {
             System.out.printf("ERROR: Buffer %d overfill!\n", _id);
             return;
         }

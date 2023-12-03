@@ -1,7 +1,6 @@
 package org.example;
 
-import org.example.WeissGruzlewskiProblems.*;
-import org.example.lab.*;
+import org.example.csp.distrbuffer.Lab9_MultipleBufferCSP;
 
 public class Main {
     public static void main(String[] args) {
