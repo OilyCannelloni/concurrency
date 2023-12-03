@@ -11,18 +11,29 @@ public class Test {
         MASTER
     }
 
+    // Które procesy mają pisać na terminal
     static boolean getVerbose(PType type) {
         switch (type) {
-            case CONSUMER, PRODUCER, MANAGER -> {return false;}
+            case CONSUMER, PRODUCER, MANAGER -> {return true;}
             case BUFFER, MASTER -> {return true;}
         }
         return false;
     }
 
     static int
-        PRODUCER_MAX_SLEEP = 8,
-        CONSUMER_MAX_SLEEP = 20,
+        // Konfiguracje:
+            // 80 / 200 / 10 -> debug
+            // 8 / 20 / 0 -> zapychanie
+            // 0 / 0 / 0 -> default, najlepiej wyłączyć terminal powyżej
+
+        // Tempo produkcji i konsumpcji, do testowania zapchanego na full bufora
+        PRODUCER_MAX_SLEEP = 80,
+        CONSUMER_MAX_SLEEP = 200,
+        // Spowolnienie pracy w celu niepomieszania się komunikatów w terminalu
+        SLOW_MANAGER = 10,
+        // Pętle każdego producenta
         LOOPS = 10,
+        // Rozmiar komórki bufora
         CELL_SIZE = 5;
 
     static void sleep(int max) {

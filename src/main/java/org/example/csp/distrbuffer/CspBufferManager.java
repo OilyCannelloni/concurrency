@@ -23,14 +23,11 @@ public class CspBufferManager implements CSProcess {
         _nProducersRunning = producers.length;
         _nConsumersRunning = consumers.length;
         _producerPivot = producers.length;
-
         _bufferCells = bufferCells;
-
         _nItems = new int[bufferCells.length];
         Arrays.fill(_nItems, 0);
 
         _cellChannels = new ArrayList<>(Arrays.stream(bufferCells).map(c -> c._managerChannel).toList());
-
         _pcChannels = new ArrayList<>();
         for (CspChannelProducer p : producers)
             _pcChannels.add(p.managerChannel);
@@ -74,10 +71,13 @@ public class CspBufferManager implements CSProcess {
 
     public void run() {
         while (_nProducersRunning > 0 && _nConsumersRunning > 0) {
+            if (Test.SLOW_MANAGER != 0)
+                Test.sleep(Test.SLOW_MANAGER);
+
             // Process all buffer signals
             int index = _alternative.select();
-            Test.print(Test.PType.MANAGER, String.format("\033[91mManager alternative:\033[39m %d\n", index));
             One2OneChannelInt channel = _pcChannels.get(index);
+            Test.print(Test.PType.MANAGER, String.format("\033[91mManager alternative:\033[39m %d", index));
 
 
             // Producer ready
@@ -113,7 +113,7 @@ public class CspBufferManager implements CSProcess {
 
                 // Send ID of next buffer
                 int buffer = getNextConsumerBuffer();
-                Test.print(Test.PType.MANAGER, String.format("\033[91mManager\033[39m picked buffer %d for consumer\n", buffer));
+                Test.print(Test.PType.MANAGER, String.format("\033[91mManager\033[39m picked buffer %d for consumer", buffer));
                 if (buffer == -1) {
                     channel.out().write(OpCode.EMPTY); // All empty
                     continue;

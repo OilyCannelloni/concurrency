@@ -36,7 +36,7 @@ public class CspChannelProducer implements CSProcess {
 
             // Write to given buffer
             bufferInChannels.get(id).out().write(_id);
-            Test.print(Test.PType.PRODUCER, String.format("\033[33mProducer\033[39m %d wrote to buffer %d\n", _id, id));
+            Test.print(Test.PType.PRODUCER, String.format("\033[33mProducer\033[39m %d wrote to buffer %d", _id, id));
         }
         managerChannel.out().write(OpCode.FINISHED);
     }

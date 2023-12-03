@@ -36,7 +36,7 @@ public class CspChannelConsumer implements CSProcess {
 
             // Receive item from given buffer
             int item = bufferOutChannels.get(id).in().read();
-            Test.print(Test.PType.CONSUMER, String.format("\033[32mConsumer\033[39m %d received item from buffer %d\n", _id, item));
+            Test.print(Test.PType.CONSUMER, String.format("\033[32mConsumer\033[39m %d received item from buffer %d", _id, item));
         }
         managerChannel.out().write(OpCode.FINISHED);
     }
